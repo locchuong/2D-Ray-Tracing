@@ -4,7 +4,9 @@ let mBorder = 12; // Additional mouse border
 let parArr = []; // Particle array
 
 function setup() {
-  createCanvas(600, 600);
+  let cnv = createCanvas(600, 600);
+  cnv.style('border-radius', '25px');
+
   walls[0] = new Boundary(100, 100, 150, 250); /* Triangle */
   walls[1] = new Boundary(100, 100, 200, 100);
   walls[2] = new Boundary(150, 250, 200, 100);
@@ -35,7 +37,14 @@ function setup() {
   for(let i = 0; i < 8; i++) {
     parArr.push(new Particle(walls));
   }
+  windowResized();
 }
+
+function windowResized() {
+  this._renderer.position(50 >> 1,
+    this.height >> 1);
+}
+
 
 function draw() {
   // Black background
